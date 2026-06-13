@@ -35,6 +35,10 @@ edge case.
 - **Adaptive lighting correction** — gamma correction + CLAHE to handle darkness and harsh light.
 - **Customizable Arabic voice alert** — the driver types their own warning phrase.
 - **Live session dashboard** — current mode, alert count, and session duration.
+- Modern Desktop GUI built with CustomTkinter.
+- Live camera feed embedded inside the application.
+- Custom Arabic voice alerts generated from user-defined text.
+
 
 ---
 
@@ -107,11 +111,12 @@ rather than memorized:
 
 ```
 .
-├── main.py                    # Real-time detection app (the system)
-├── make_alert.py              # Generate the custom Arabic voice alert
+├── app_gui.py                 # Desktop GUI application
+├── main.py                    # Real-time detection engine
+├── make_alert.py              # Generate custom Arabic voice alerts
 ├── eye_weights.weights.h5     # Trained CNN weights
-├── requirements.txt           # Pinned dependencies
-├── assets/                    # Screenshots & training curves
+├── requirements.txt
+├── assets/
 └── README.md
 ```
 
@@ -120,7 +125,19 @@ rather than memorized:
 > architecture avoids version-specific serialization issues across machines.
 
 ---
+## Technologies Used
 
+- Python
+- TensorFlow
+- Keras
+- OpenCV
+- MediaPipe
+- CustomTkinter
+- NumPy
+- gTTS
+- Pygame
+
+  
 ## Setup & run
 
 Requires **Python 3.10** and a webcam.
@@ -141,6 +158,9 @@ python make_alert.py
 
 # 4. Run the system
 python main.py
+
+# 5. Run the desktop application
+python app_gui.py
 ```
 
 Press **`q`** to quit the window.
@@ -177,9 +197,11 @@ Press **`q`** to quit the window.
 - Performance drops in near-total darkness (no camera can compensate for zero
   light); an infrared camera would address this, matching real in-car systems.
 - Currently single-driver (one face) by design.
-- Future: add head-pose/yawning cues, package as a desktop GUI, and evaluate on a
-  dedicated niqab eye dataset.
-
+- Future:
+- Add head-pose estimation.
+- Add yawning detection.
+- Build a mobile version.
+- Deploy on edge devices (Raspberry Pi / Jetson Nano).
 ---
 
 ## Acknowledgements
